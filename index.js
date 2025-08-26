@@ -8,8 +8,8 @@ const app = express();
 // CORS setup for frontend at localhost:5173
 app.use(
   cors({
-    origin: "http://localhost:5173",
-    methods: ["GET", "POST"],
+    origin: [process.env.FRONTEND_URL],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     credentials: true,
   })
 );
