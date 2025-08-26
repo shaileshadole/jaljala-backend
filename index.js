@@ -24,10 +24,6 @@ const URL = `https://generativelanguage.googleapis.com/v1beta/models/${API_MODEL
 // Chat route
 app.post("/chat", async (req, res) => {
   try {
-    console.log("Gemini API Key:", GEMINI_API_KEY ? "Loaded ✅" : "Missing ❌");
-
-    console.log("Using model:", API_MODEL);
-
     const { message } = req.body;
 
     const response = await axios.post(URL, {
@@ -36,14 +32,10 @@ app.post("/chat", async (req, res) => {
 
     const reply = response.data.candidates[0].content.parts[0].text;
     res.json({ reply });
-    console.log("Gemini API Key:", GEMINI_API_KEY ? "Loaded ✅" : "Missing ❌");
   } catch (error) {
     console.log("ERRROR: " + error);
     console.error(error.response?.data || error.message);
     res.status(500).json({ error: "Something went wrong" });
-    console.log("Gemini API Key:", GEMINI_API_KEY ? "Loaded ✅" : "Missing ❌");
-  } finally {
-    console.log("Gemini API Key:", GEMINI_API_KEY ? "Loaded ✅" : "Missing ❌");
   }
 });
 
