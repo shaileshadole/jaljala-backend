@@ -18,6 +18,7 @@ app.use(express.json());
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 
+
 const API_MODEL = "gemini-2.5-flash"; // or "gemini-pro" if previously used
 const URL = `https://generativelanguage.googleapis.com/v1beta/models/${API_MODEL}:generateContent?key=${GEMINI_API_KEY}`;
 
